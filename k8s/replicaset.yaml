@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: pyserver
+  labels:
+    app: pyserver
+spec:
+  replicas: 5 # quantidade de pods rodando
+  selector:
+    matchLabels:
+      app: pyserver
+  template:
+    metadata:
+      labels:
+        app: "pyserver"
+    spec:
+      containers:
+      - name: pyserver
+        image: "davidbarenco/pyserver:latest"

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "pyserver"
+  labels:
+    app: "pyserver"
+spec:
+  containers:
+  - name: pyserver
+    image: "davidbarenco/pyserver:latest"
+    # resources:
+    #   limits:
+    #     memory: "128Mi"
+    #     cpu: "500m"
+    # ports:
+    #   - containerPort: <Port>

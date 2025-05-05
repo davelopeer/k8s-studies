@@ -1,0 +1,47 @@
+> kind create cluster --name=XPTO
+
+> kubectl cluster-info --context kind-kind
+
+Testando pra ver se o kbectl está apontando pro cluster criado
+
+> kubectl get nodes
+> docker ps
+
+Pra deletar um cluster
+
+> kind get clusters
+> kind delete clusters <CLUSTER-NAME>
+
+
+
+
+Criando com arquivo yaml (multiplos nodes)
+> kind create cluster --config=k8s/kind.yaml
+
+
+Conseguimos trocar o cluster (pra um em nuvem)
+> kubectl config get-clusters
+> kubectl config use-context <NAME>
+
+
+Aplicando um Pod
+> kubectl apply -f k8s/pod.yaml
+
+> kubectl port-forward pod/<POD-NAME> 8000:80
+> kubectl get pod
+> kubectl delete pod <POD-NAME>
+
+
+
+
+Rollout
+> kubectl rollout history deployment <DEPLOYMENT-NAME>
+> kubectl rollout undo deployment <DEPLOYMENT-NAME> --to-revision=1 
+
+
+Service
+> kubectl get svc
+> kubectl port-forward svc/pyserver-service 8080/8080
+
+
+> kubectl proxy --port=8080

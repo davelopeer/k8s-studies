@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyserver
+  labels:
+    app: pyserver
+spec:
+  replicas: 1 # quantidade de pods rodando
+  selector:
+    matchLabels:
+      app: pyserver
+  template:
+    metadata:
+      labels:
+        app: "pyserver"
+    spec:
+      containers:
+      - name: pyserver
+        image: "davidbarenco/pyserver:v3"
+        env:
+          - name: NAME
+            value: "Wesley"
+          - name: AGE
+            value: "35"
+

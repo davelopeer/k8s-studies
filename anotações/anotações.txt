@@ -1,0 +1,28 @@
+Cluster -> conjunto de máquinas (nodes) que, juntas, tem um grande poder computacional
+Cluster master -> controla os processos do que os outros nós vão fazer
+
+Cada máquina possui uma quantidade de vCPU e Memória. O k8s sabe o total de recursos disponíveis pra disponibilizar baseado nisso.
+
+
+Pods -> Unidade que contém os containers provisionados. Representa os processos rodando no cluster. Menor objeto do kubernetes.
+"uma máquina dentro do k8s, com ip"
+Normalmente 1 container por pod, mas pode ter-se mais de um container por pod.
+
+
+Replica Set -> Replica pods para termos mais persistencia. Caso um pod caia, outro é recriado
+O ReplicaSet tem um problema: para atualizarmos um pod com uma imagem diferente do docker, por exemplo, temos que deletar todos os pods.
+
+
+Deployment -> Administra o ReplicaSet. Caso um Deployment seja atualizado ele cria um novo ReplicaSet com novos Pods.
+No dia a dia utilizaremos o Deployment.
+
+Deployment --> ReplicaSet --> Pod
+
+
+Services -> São a porta de entrada da nossa aplicação. Funcionam como um Load Balancer.
+Um IP aponta pra um service. ClusterIP, NodePort, LoadBalancer (com ip externo) são exemplos.
+
+
+
+Objetos de configuração -> Configuração de ambientes 
+
