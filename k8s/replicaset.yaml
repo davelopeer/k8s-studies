@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: pyserver
-        image: "davidbarenco/pyserver:latest"
+        image: "davidbarenco/pyserver:v1"

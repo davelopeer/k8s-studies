@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pyserver-env
+data:
+  NAME: "David Barenco"
+  AGE: "35"

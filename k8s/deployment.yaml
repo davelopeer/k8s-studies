@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: pyserver
-        image: "davidbarenco/pyserver:v3"
+        image: "davidbarenco/pyserver:v2"
         env:
           - name: NAME
-            value: "Wesley"
+            value: "David"
           - name: AGE
             value: "35"
 

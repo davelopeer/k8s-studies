@@ -13,10 +13,8 @@ Pra deletar um cluster
 > kind delete clusters <CLUSTER-NAME>
 
 
-
-
 Criando com arquivo yaml (multiplos nodes)
-> kind create cluster --config=k8s/kind.yaml
+> kind create cluster --config=k8s/kind.yaml --name=fullcycle
 
 
 Conseguimos trocar o cluster (pra um em nuvem)
@@ -32,8 +30,6 @@ Aplicando um Pod
 > kubectl delete pod <POD-NAME>
 
 
-
-
 Rollout
 > kubectl rollout history deployment <DEPLOYMENT-NAME>
 > kubectl rollout undo deployment <DEPLOYMENT-NAME> --to-revision=1 
@@ -45,3 +41,15 @@ Service
 
 
 > kubectl proxy --port=8080
+
+
+Configmap
+> kubectl apply -f k8s/configmap-env.yaml
+
+
+Acessando um Pod
+> kubectl exet -it <POD-NAME> -- bash
+
+
+Acessando o Log do Pod
+> kubectl logs <POD-NAME>

@@ -26,3 +26,4 @@ Um IP aponta pra um service. ClusterIP, NodePort, LoadBalancer (com ip externo) 
 
 Objetos de configuração -> Configuração de ambientes 
 
+*Atualizar o configmap não atualiza o deployment. Temos que reiniciá-lo para aplicar as modificações.
