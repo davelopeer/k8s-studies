@@ -31,3 +31,5 @@ Objetos de configuração -> Configuração de ambientes
 
 Probes
 
+Liveness: verifica se a aplicação está de pé (live). Configuramos para verificar de tempo em tempo, e caso esteja down, reiniciar os pods
+Readiness: verifica se a aplicação subiu e redireciona o tráfego quando a aplicação subiu

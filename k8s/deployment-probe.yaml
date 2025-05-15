@@ -16,7 +16,33 @@ spec:
     spec:
       containers:
       - name: pyserver
-        image: "davidbarenco/pyserver:v3"
+        image: "davidbarenco/pyserver:v3.1"
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 5 # checagem a cada segundos
+          failureThreshold: 1 # quantas vezes vai dar errado pra reiniciar o pod
+          timeoutSeconds: 1 # tempo limite da requisição de checagem
+          successThreshold: 1 # quantas vezes testar pra dizer que a aplicação está live
+          # initialDelaySeconds: 15 #começa a contar o check após esses segundos
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 3
+          failureThreshold: 1
+          # initialDelaySeconds: 10 # caso não use o startupProbe
+          # timeoutSeconds: 1  # Valor default já é 1
+
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 3
+          failureThreshold: 30
         env:
           - name: NAME
             value: "David"

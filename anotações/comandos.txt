@@ -53,3 +53,9 @@ Acessando um Pod
 
 Acessando o Log do Pod
 > kubectl logs <POD-NAME>
+
+
+Probe, verificando o liveness da aplicação:
+
+> kubectl apply -f k8s/deployment-probe.yaml && watch -n1 kubectl get pods
+> kubectl describe pod <POD-NAME>

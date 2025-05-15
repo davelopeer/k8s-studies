@@ -18,7 +18,7 @@ def index():
 def health_check():
     duration = datetime.datetime.now() - startedAt
 
-    if duration.seconds > 25:
+    if duration.seconds > 30 or duration.seconds < 10:
         return Response(status_code=500)
     else:
         return JSONResponse(status_code=200, content={'status': 'ok'})
