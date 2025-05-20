@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: pyserver-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pyserver
+  minReplicas: 1
+  maxReplicas: 30
+  targetCPUUtilizationPercentage: 60 # Normalmente em torno de 75%
+

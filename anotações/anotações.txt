@@ -33,3 +33,16 @@ Probes
 
 Liveness: verifica se a aplicação está de pé (live). Configuramos para verificar de tempo em tempo, e caso esteja down, reiniciar os pods
 Readiness: verifica se a aplicação subiu e redireciona o tráfego quando a aplicação subiu
+
+
+HPA - Horizontal Pod Autoscaling
+
+Precisamos do Metric Server, que vem por padrão nos servidores na nuvem, mas no kind é necessário instalar. Ele é responsável por fornecer
+a métrica de uso de CPU e memória dos pods que utilizamos.
+
+
+
+Teste de stress
+
+- Fortio: https://github.com/fortio/fortio
+- K6: https://github.com/grafana/k6

@@ -59,3 +59,14 @@ Probe, verificando o liveness da aplicação:
 
 > kubectl apply -f k8s/deployment-probe.yaml && watch -n1 kubectl get pods
 > kubectl describe pod <POD-NAME>
+
+
+Verificar o consumo de CPU e Memória
+
+> kubectl top pod <POD-NAME>
+> watch -n1 kubectl get hpa
+
+
+Fortio
+
+> kubectl run -it fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://pyserver-service/health"
