@@ -38,11 +38,34 @@ Readiness: verifica se a aplicação subiu e redireciona o tráfego quando a apl
 HPA - Horizontal Pod Autoscaling
 
 Precisamos do Metric Server, que vem por padrão nos servidores na nuvem, mas no kind é necessário instalar. Ele é responsável por fornecer
-a métrica de uso de CPU e memória dos pods que utilizamos.
-
+a métrica para o HPA de uso de CPU e memória dos pods que utilizamos.
 
 
 Teste de stress
 
 - Fortio: https://github.com/fortio/fortio
 - K6: https://github.com/grafana/k6
+
+
+Volumes persistentes
+
+
+- Pool de storage: estático, separa um espaço do disco pra aplicação. Normalmente utilizado OnPremisse
+
+- Storage class: dinamico, utilizado em nuvem. Disponibiliza o espaço dinamicamente em nuvem.
+
+- AccessMode ReadWriteOnce - outros pods não podem acessar os dados no pod
+
+
+Stateless e Stateful
+
+Quando queremos subir uma aplicação de banco de dados (Stateful), precisamos que ela suba de forma ordenada.
+Suponha que tenhamos um pod rodando o MySQL num pod e ele será o Master. Num outro pod rodamos uma instância MySQL Slave de leitura, que consome os dados do Master.
+Precisamos que o Master suba primeiro e depois o Slave, pois este tem uma dependência do anterior.
+
+Pra isso trabalhamos com um objeto do k8s chamado StatefulSet. Ele cria os pods numa ordem definida.
+
+
+Headless Service
+
+Não tem um IP, é apenas um apontamento de DNS

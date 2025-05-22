@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  serviceName: mysql-h # Igual o nome do service
+  # podManagementPolicy: Parallel   # Cria de forma paralela e não sequencial
+  replicas: 4
+  selector:
+      matchLabels:
+        app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: root
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: "true"
+          - name: MYSQL_RANDOM_ROOT_PASSWORD
+            value: "true"
+        # ports:
+        # - containerPort: 80
+        #   name: web
+        volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql
+
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-volume
+    spec:
+      accessModes: 
+        - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 5Gi

@@ -1,0 +1,53 @@
+# -------------------------
+# ClusterIP gera um IP (internos) e uma porta pra acessarmos a aplicação
+# -------------------------
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pyserver-service
+# spec:
+#   selector:
+#     app: pyserver # Relacionado ao matchLabel do deployment.yaml
+#   type: ClusterIP
+#   ports:
+#   - name: pyserver-service
+#     port: 8080 # Porta exposta pelo service
+#     targetPort: 8000 # Porta do container da aplicação
+#     protocol: TCP
+
+
+
+
+# -------------------------
+# NodePort relacionam uma porta aos nodes da aplicação
+# -------------------------
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pyserver-service
+# spec:
+#   selector:
+#     app: pyserver
+#   type: NodePort
+#   ports:
+#   - name: pyserver-service
+#     port: 80
+#     targetPort: 8000
+#     protocol: TCP
+#     nodePort: 30001
+
+
+
+# -------------------------
+# LoadBalancer são úteis pra expor aplicações pois geram um IP público.
+# -------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-h # Igual o service name do statefulset
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+  clusterIP: None

@@ -53,9 +53,18 @@ spec:
             port: 8000
           periodSeconds: 3
           failureThreshold: 30
-        env:
-          - name: NAME
-            value: "David"
-          - name: AGE
-            value: "35"
+
+        envFrom:
+          - configMapRef:
+              name: pyserver-env
+
+        volumeMounts:
+          - mountPath: "/pvc"
+            name: pyserver-volume
+
+      volumes:
+        - name: pyserver-volume
+          persistentVolumeClaim:
+            claimName: pyserver-pvc
+
 

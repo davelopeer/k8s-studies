@@ -21,6 +21,8 @@ Conseguimos trocar o cluster (pra um em nuvem)
 > kubectl config get-clusters
 > kubectl config use-context <NAME>
 
+> kubectl config get-contexts
+> kubectl config use-context <NAME>
 
 Aplicando um Pod
 > kubectl apply -f k8s/pod.yaml
@@ -70,3 +72,27 @@ Verificar o consumo de CPU e Memória
 Fortio
 
 > kubectl run -it fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://pyserver-service/health"
+
+
+Storage
+
+> kubectl get storageclass
+
+> kubectl get pv      # PersistentVolume
+> kubectl get pvc     # PersistentVolumeClaim
+
+
+Verificando a persistencia
+
+> kubectl get pod
+> kubectl exec -it <POD-NAME> --bash
+# criar arquivo na pasta persistentes
+> kubectl delete pod <POD-NAME>
+
+
+Utilizando o headless service, chamando o pod pelo dns:
+
+> kubectl get statefulset
+> kubectl get endpoints <SERVICE-NAME>
+> kubectl exec -it <POD-NAME> -- bash
+  > ping <POD-NAME>.<SERVICE-NAME>
